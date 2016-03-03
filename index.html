@@ -14,7 +14,7 @@
         <link href="fonts/avenir-next-lt-pro/fontstyle.css" rel="stylesheet">
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
-	<body>
+	<body ng-app="angularApp">
 
 		<!-- Header -->
 			<section id="header">
@@ -35,8 +35,6 @@
 				</nav>
 				<footer>
 					<ul class="icons">
-						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
 						<li><a href="https://www.linkedin.com/in/amathews1" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
 						<li><a href="https://github.com/alexjmathews" class="icon fa-github"><span class="label">Github</span></a></li>
 						<li><a href="mailto:alex.mathews@fusiform.co" class="icon fa-envelope"><span class="label">Email</span></a></li>
@@ -51,6 +49,11 @@
 					<div id="main">
 
 						<!-- One -->
+						<section id="particleBanner">
+							<div id = "particles-js"style="height:15em; width:100%; background-color:#d5535d;">
+
+							</div>
+						</section>
 							<section id="one">
 								<div class="container">
 									<header class="major">
@@ -60,8 +63,8 @@
 									<p>
 										Currently I live in Baltimore, where I'm a student at the <a href="http://www.jhu.edu">Johns Hopkins University</a>,
 										but I grew up in Southern California.
-										I love playing with technology (particularly Apple products), and I enjoy programming more than anyone should.
-										This informational page is so for people to learn more about me and the projects I'm passionate about.
+										I love exploring technology (particularly Apple products), and I enjoy programming more than anyone should.
+										This page is for people to learn more about me and the projects I'm passionate about.
 										Scroll down for more!
 									</p>
 								</div>
@@ -71,13 +74,13 @@
 							<section id="two">
 								<div class="container">
 									<h3>Things I Can Do</h3>
-									<p>I've learned a lot over the last few years through class and variety of projects.
+									<p>I've learned a lot over the last few years through classes and variety of projects.
 										Hopefully, some of these are useful!</p>
 									<ul class="feature-icons">
 										<li class="fa-code">Software Development: <a href="#">More</a></li>
 										<li class="fa-cubes">Stack small boxes</li>
 										<li class="fa-book">Read books and stuff</li>
-										<li class="fa-coffee">Drink much coffee</li>
+										<li class="fa-coffee">Enjoy good coffee</li>
 										<li class="fa-bolt">Lightning bolt</li>
 										<li class="fa-users">Shadow clone technique</li>
 									</ul>
@@ -117,41 +120,44 @@
 
 						<!-- Four -->
 							<section id="four">
-								<div class="container">
-									<h3>Contact Me</h3>
-									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in .</p>
-									<form method="POST" action="http://formspree.io/alex.mathews@fusiform.co">
+								<div ng-controller="formControl"class="container">
+									<h3>Contact me</h3>
+									<p>Send me a message directly, and I'll respond as soon as I can. Looking forward to hearing from you.</p>
+									<label>**All Fields Required**</label>
+									<form name="messageForm"ng-submit="submitForm()" >
+
 										<div class="row uniform">
-											<div class="6u 12u(xsmall)"><input type="text" name="name" id="name" placeholder="Name" /></div>
-											<div class="6u 12u(xsmall)"><input type="email" name="email" id="email" placeholder="Email" /></div>
+											<div class="6u 12u(xsmall)"><input type="text" ng-model="message.name" required name="name" id="name" placeholder="Name" /></div>
+											<div class="6u 12u(xsmall)"><input type="email" ng-model="message.email" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"required name="email" id="email" placeholder="Email" /></div>
 										</div>
 										<div class="row uniform">
-											<div class="12u"><input type="text" name="subject" id="subject" placeholder="Subject" /></div>
+											<div class="12u"><input type="text" ng-model="message.subject"name="subject" id="subject" placeholder="Subject" /></div>
 										</div>
 										<div class="row uniform">
-											<div class="12u"><textarea name="message" id="message" placeholder="Message" rows="6"></textarea></div>
+											<div class="12u"><textarea name="message" id="message" required ng-model="message.text"placeholder="Message" rows="6"></textarea></div>
 										</div>
 										<div class="row uniform">
 											<div class="12u">
 												<ul class="actions">
-													<li><input type="submit" class="special" value="Send Message" /></li>
-													<li><input type="reset" value="Reset Form" /></li>
+													<li><input type="submit" style="margin-right:20px;"ng-class="{ 'disabled': !messageForm.$valid}"class="special" value="Send Message" />
+													<span style="color:#1fa46d;" class="fade" ng-show="submitSuccess"><i class="fa fa-check"></i> Thanks for reaching out!</span>
+													<!-- <span ng-show="submitting"style="margin-left: 10px;" class="fa fa-spinner fa-spin"></span> -->
+
+													<span style="color:#d9404b;"ng-show="messageForm.email.$error.email">Please enter a valid email.</span>
+													</li>
 												</ul>
 											</div>
 										</div>
 									</form>
 								</div>
 							</section>
-
-
-
 					</div>
 
 				<!-- Footer -->
 					<section id="footer">
 						<div class="container">
 							<ul class="copyright">
-								<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								<li>&copy; Alex Mathews. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 							</ul>
 						</div>
 					</section>
@@ -164,6 +170,10 @@
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
+			<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.min.js"></script>
+			<script src="assets/js/app.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 
