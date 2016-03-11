@@ -2403,7 +2403,7 @@
 		input[type="reset"].special,
 		input[type="button"].special,
 		.button.special {
-			background-color: #d5535d;
+			background-color:#2969B0;
 			color: #ffffff !important;
 		}
 
@@ -2845,7 +2845,7 @@
 					}
 
 					#titleBar .toggle:before {
-						background: #d5535d;
+						background: #2C82C9;
 						color: #ffffff;
 						content: '\f0c9';
 						display: block;
