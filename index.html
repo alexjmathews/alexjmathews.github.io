@@ -121,34 +121,7 @@
 						<!-- Four -->
 							<section id="four">
 								<div ng-controller="formControl"class="container">
-									<h3>Contact me</h3>
-									<p>Send me a message directly, and I'll respond as soon as I can. Looking forward to hearing from you.</p>
-									<label>Please fill out all the fields!</label>
-									<form name="messageForm"ng-submit="submitForm()" >
-
-										<div class="row uniform">
-											<div class="6u 12u(xsmall)"><input type="text" ng-model="message.name" required name="name" id="name" placeholder="Name" /></div>
-											<div class="6u 12u(xsmall)"><input type="email" ng-model="message.email" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"required name="email" id="email" placeholder="Email" /></div>
-										</div>
-										<div class="row uniform">
-											<div class="12u"><input type="text" ng-model="message.subject"name="subject" id="subject" placeholder="Subject" /></div>
-										</div>
-										<div class="row uniform">
-											<div class="12u"><textarea name="message" id="message" required ng-model="message.text"placeholder="Message" rows="6"></textarea></div>
-										</div>
-										<div class="row uniform">
-											<div class="12u">
-												<ul class="actions">
-													<li><input type="submit" style="margin-right:20px;"ng-class="{ 'disabled': !messageForm.$valid}"class="special" value="Send Message" />
-													<span style="color:#1fa46d;" class="fade" ng-show="submitSuccess"><i class="fa fa-check"></i> Thanks for reaching out!</span>
-													<!-- <span ng-show="submitting"style="margin-left: 10px;" class="fa fa-spinner fa-spin"></span> -->
-
-													<span style="color:#d9404b;"ng-show="messageForm.email.$error.email">Please enter a valid email.</span>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</form>
+									<div loopgenius-form="973d19c9-e420-49fa-940a-fddc2d8fa585"></div>
 								</div>
 							</section>
 					</div>
@@ -176,6 +149,11 @@
 			<script src="assets/js/app.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			<script text="text/javascript">	
+				var IDEA_ID = "ce34d916-afd3-4596-89e6-74d2ffe4e55a";
+			
+				!function(){var t=window,e=t.Loopgenius;if("function"==typeof e)e("restart"),e("update",t.LoopgeniusSettings);else{var n=document,o=function(){o.c(arguments)};o.q=[],o.c=function(t){o.q.push(t)},t.Loopgenius=o;var a=function(){var t=n.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://magic-form.dev.loopgenius.com/"+IDEA_ID+".js";var e=n.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)};"complete"===document.readyState?a():t.attachEvent?t.attachEvent("onload",a):t.addEventListener("load",a,!1)}}();
+			</script>
 
 	</body>
 </html>
